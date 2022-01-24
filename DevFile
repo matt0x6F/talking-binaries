@@ -1,0 +1,18 @@
+plugins:
+  - ref: echo # reference used throughout steps
+    name: dist/plugin-echo
+  - ref: shell
+    # plugin binary names can use a relative path or a name discoverable via PATH
+    name: dist/plugin-shell
+
+steps:
+  - name: say_hi # name of the step
+    plugin: echo
+    config: # configuration to pass to the plugin
+      say: hello world
+  - name: say_hi_via_bash # name of the step
+    plugin: shell
+    config: # configuration to pass to the plugin
+      commands:
+      - echo -n "hello world"
+      - echo -n "hello world 2"
